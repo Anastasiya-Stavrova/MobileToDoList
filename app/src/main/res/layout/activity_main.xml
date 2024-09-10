@@ -20,18 +20,32 @@
         android:textAlignment="center"
         android:textSize="25sp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/toDoListRecyclerview"
+
+    <TextView
+        android:id="@+id/description"
+        style="@style/TextAppearance.AppCompat.Title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="20dp"
+        android:textColor="?attr/colorPrimary"
+        android:layout_below="@+id/toDoTitle"
+        android:text="Name:"
+        android:textAlignment="center"
+        android:textSize="25sp" />
+
+    <!--<androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/toDoListRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/newTaskButton"
+        android:layout_above="@+id/addButton"
         android:layout_below="@+id/toDoTitle"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
-        android:backgroundTint="@color/design_default_color_background" />
+        android:backgroundTint="@color/design_default_color_background" />-->
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/newTaskButton"
+        android:id="@+id/addButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
@@ -42,7 +56,7 @@
         android:padding="5dp"
         android:text="Добавить задачу"
         android:textColor="?colorOnPrimary"
-        app:icon="@drawable/baseline_add_24"
+        app:icon="@drawable/plus"
         app:iconTint="?colorOnPrimary"/>
 
     <RelativeLayout
@@ -64,9 +78,8 @@
             android:backgroundTint="@android:color/transparent"
             android:scaleX="2"
             android:scaleY="2"
-            android:src="@drawable/baseline_file_download_24"
-            app:tint="?attr/colorPrimary"
-            android:onClick="downloadFile"/>
+            android:src="@drawable/download_file"
+            app:tint="?attr/colorPrimary" />
 
         <ImageButton
             android:id="@+id/uploadButton"
@@ -80,8 +93,7 @@
             android:scaleX="2"
             android:scaleY="2"
             app:tint="?attr/colorPrimary"
-            android:onClick="uploadFile"
-            android:src="@drawable/baseline_upload_file_24" />
+            android:src="@drawable/upload_file" />
 
     </RelativeLayout>
 

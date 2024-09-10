@@ -8,37 +8,47 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:background="@drawable/border">
 
-        <CheckBox
+        <ImageButton
+            android:id="@+id/completeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="15dp"
             android:layout_gravity="center"
-            android:scaleY="1.5"
+            android:layout_marginHorizontal="5dp"
+            android:backgroundTint="@android:color/transparent"
+            android:contentDescription="checkbox"
             android:scaleX="1.5"
-            android:theme="@style/MyCheckBox"/>
+            android:scaleY="1.5"
+            android:src="@drawable/radio_unchecked"
+            app:tint="?attr/colorPrimary" />
 
 
         <TextView
-            android:id="@+id/name"
-            android:text="Place Holder"
+            android:id="@+id/taskName"
+            style="@style/TextAppearance.AppCompat.Title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            style="@style/TextAppearance.AppCompat.Title"
             android:layout_gravity="center"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:text="Task Description"
+            android:textColor="?attr/colorPrimary"/>
 
-        <TextView
-            android:layout_marginHorizontal="5dp"
-            android:id="@+id/dueTime"
-            android:text="Place Holder"
+        <ImageButton
+            android:id="@+id/deleteButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/TextAppearance.AppCompat.Title"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="5dp"
+            android:backgroundTint="@android:color/transparent"
+            android:contentDescription="deleteTask"
+            android:scaleX="1.5"
+            android:scaleY="1.5"
+            android:src="@drawable/delete_task"
+            app:tint="?attr/colorPrimary" />
 
     </LinearLayout>
 
