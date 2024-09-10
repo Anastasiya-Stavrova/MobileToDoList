@@ -11,7 +11,8 @@ class TaskItem(
     var id: UUID = UUID.randomUUID()
 ) {
 
-    fun imageResource(): Int {
+    fun imageResource(): Int
+    {
         if(checked){
             return R.drawable.radio_checked
         }
@@ -20,13 +21,5 @@ class TaskItem(
 
     fun imageColor(context: Context): Int {
         return ContextCompat.getColor(context, R.color.main_color)
-    }
-
-    fun changeChecked() {
-        checked = !checked
-    }
-
-    fun changeDescription(description: String){
-        this.description = description
     }
 }

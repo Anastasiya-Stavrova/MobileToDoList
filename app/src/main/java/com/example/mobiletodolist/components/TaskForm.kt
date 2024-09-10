@@ -27,7 +27,7 @@ class TaskForm(var taskItem: TaskItem?): BottomSheetDialogFragment()
         taskViewModel = ViewModelProvider(activity).get(TaskViewModel::class.java)
 
         if(taskItem != null) {
-            binding.taskTitle.text = "Изменить задачу"
+            binding.taskTitle.text = "Редактировать задачу"
 
             val editable = Editable.Factory.getInstance()
             binding.taskDesc.text = editable.newEditable(taskItem!!.description)
