@@ -3,6 +3,7 @@ package com.example.mobiletodolist.components
 
 import android.os.Bundle
 import android.text.Editable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,13 +24,14 @@ class TaskForm(var taskItem: TaskItem?): BottomSheetDialogFragment()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var activity = requireActivity()
+        val activity = requireActivity()
         taskViewModel = ViewModelProvider(activity).get(TaskViewModel::class.java)
 
-        if(taskItem != null) {
+        if(taskItem != null){
             binding.taskTitle.text = "Редактировать задачу"
 
             val editable = Editable.Factory.getInstance()
+
             binding.taskDesc.text = editable.newEditable(taskItem!!.description)
         }
         else {
@@ -49,7 +51,7 @@ class TaskForm(var taskItem: TaskItem?): BottomSheetDialogFragment()
             taskViewModel.addTaskItem(newTaskItem)
         }
         else {
-            taskViewModel.updateTaskItem(taskItem!!.id, taskItem!!.description)
+            taskViewModel.updateTaskItem(taskItem!!.id, description)
         }
 
         binding.taskDesc.setText("")
