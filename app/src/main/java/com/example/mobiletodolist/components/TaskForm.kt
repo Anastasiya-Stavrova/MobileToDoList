@@ -6,6 +6,8 @@ import android.text.Editable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import android.widget.Toast.LENGTH_SHORT
 import androidx.lifecycle.ViewModelProvider
 import com.example.mobiletodolist.TaskItem
 import com.example.mobiletodolist.databinding.FragmentNewTaskSheetBinding
@@ -38,7 +40,12 @@ class TaskForm(var taskItem: TaskItem?): BottomSheetDialogFragment()
         }
 
         binding.saveButton.setOnClickListener {
-            saveAction()
+            if(binding.taskDesc.text.toString() != ""){
+                saveAction()
+            }
+            else {
+                Toast.makeText(context, "Заполните поле!", LENGTH_SHORT).show()
+            }
         }
     }
 

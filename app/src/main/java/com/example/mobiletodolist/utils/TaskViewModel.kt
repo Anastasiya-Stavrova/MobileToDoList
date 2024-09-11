@@ -2,12 +2,16 @@ package com.example.mobiletodolist.utils
 
 
 import android.content.Context
+import android.widget.Toast
+import android.widget.Toast.LENGTH_SHORT
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.mobiletodolist.TaskItem
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.io.File
+import java.text.SimpleDateFormat
+import java.util.Date
 import java.util.UUID
 
 
@@ -75,7 +79,7 @@ class TaskViewModel: ViewModel() {
         myContext = context
     }
 
-    fun saveDataToJsonFile(context: Context) {
+    private fun saveDataToJsonFile(context: Context) {
         val list = taskItemsList.value
 
         val gson = Gson()
@@ -83,5 +87,22 @@ class TaskViewModel: ViewModel() {
 
         val file = File(context.filesDir, "taskItems.json")
         file.writeText(jsonString)
+    }
+
+    fun downloadFile(){
+        val sdf = SimpleDateFormat("dd.M.yyyy_hh:mm:ss")
+        val currentDate = sdf.format(Date())
+
+        val file = File("/storage/emulated/0/Download/", "Tasks_${currentDate}.json")
+        file.createNewFile()
+
+        val list = taskItemsList.value
+
+        val gson = Gson()
+        val jsonString = gson.toJson(list)
+
+        file.writeText(jsonString)
+
+        Toast.makeText(myContext, "Список дел сохранен!", LENGTH_SHORT).show()
     }
 }

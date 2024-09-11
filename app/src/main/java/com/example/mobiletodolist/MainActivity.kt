@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity(), TaskItemsClickListener {
         }
 
         binding.downloadButton.setOnClickListener {
-            taskViewModel.saveDataToJsonFile(this)
+            taskViewModel.downloadFile()
         }
 
         binding.uploadButton.setOnClickListener {
@@ -141,47 +141,5 @@ class MainActivity : AppCompatActivity(), TaskItemsClickListener {
                 }
             }
         }
-    }
-
-
-
-    fun getTextContent(pathFilename: String): String {
-
-        val fileobj = File( pathFilename )
-
-        if (!fileobj.exists()) {
-
-            println("Path does not exist")
-
-        } else {
-
-            println("Path to read exist")
-        }
-
-        println("Path to the file:")
-        println(pathFilename)
-
-        if (fileobj.exists() && fileobj.canRead()) {
-
-            var ins: InputStream = fileobj.inputStream()
-            var content = ins.readBytes().toString(Charset.defaultCharset())
-            return content
-
-        }else{
-
-            return "Some error, Not found the File, or app has not permissions: " + pathFilename
-        }
-    }
-
-    fun uploadFile(uri: Uri, context: Context) {
-
-        val contentResolver = context.contentResolver
-        val inputStream = contentResolver.openInputStream(uri)
-        val reader = BufferedReader(InputStreamReader(inputStream))
-        val jsonString = reader.use { it.readText() }
-
-        val data: List<TaskItem> = Gson().fromJson(jsonString, Array<TaskItem>::class.java).toList()
-
-        Log.d("jbdjbjd", "${data}")
     }
 }
